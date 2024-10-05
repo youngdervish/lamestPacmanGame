@@ -16,14 +16,15 @@ void createBox(int boxSize, int playerPositionX, int playerPositionY) {
 		for (int j = 0; j < boxSize; j++)
 		{
 			if (i == playerPositionX && j == playerPositionY) {
-				cout << "$ ";
+				cout << "\033[32m$ ";
 			}
 			else {
-				cout << "* ";
+				cout << "\033[0m* ";
 			}
 		}
 		cout << "\n";
 	}
+	cout << "\n\033[36mYou can click z to exit\n";
 }
 
 void main() {
@@ -43,13 +44,12 @@ void main() {
 	while (true) {
 		userMovement = _getch();
 		if (userMovement == 72 || userMovement == 80 || userMovement == 75 || userMovement == 77 || userMovement == 122) {
-			cout << "\nYou can click z to exit\n";
 			switch (userMovement) {
 			case 72:
 				cout << "UP";
 				if (ppX > 0) ppX--;
 				else { 
-					cout << "\nCan't move that way for now\n";
+					cout << "\n\033[31mCan't move that way for now\n";
 					sleep_for(milliseconds(500));	//system("PAUSE");
 				}
 				break;
@@ -57,7 +57,7 @@ void main() {
 				cout << "DOWN";
 				if (ppX < userDefinedBoxSize - 1) ppX++;
 				else {
-					cout << "\nCan't move that way for now\n";
+					cout << "\n\033[31mCan't move that way for now\n";
 					sleep_for(milliseconds(500));	//system("PAUSE");
 				}
 				break;
@@ -65,7 +65,7 @@ void main() {
 				cout << "LEFT";
 				if (ppY > 0) ppY--;
 				else {
-					cout << "\nCan't move that way for now\n";
+					cout << "\n\033[31mCan't move that way for now\n";
 					sleep_for(milliseconds(500));	//system("PAUSE");
 				}
 				break;
@@ -73,7 +73,7 @@ void main() {
 				cout << "RIGHT";
 				if (ppY < userDefinedBoxSize - 1) ppY++;
 				else {
-					cout << "\nCan't move that way for now\n";
+					cout << "\n\033[31mCan't move that way for now\n";
 					sleep_for(milliseconds(500));	//system("PAUSE");
 				}
 				break;
